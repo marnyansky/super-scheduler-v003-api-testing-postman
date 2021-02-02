@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "0ea18ee4-91a3-4765-91a2-b4da02ca5919",
+		"name": "SuperScheduler003RunOnceTests",
+		"description": "All tests in this collection are supposed to be executed once",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AuthController",
+			"item": [
+				{
+					"name": "AcPositiveTests",
+					"item": [
+						{
+							"name": "AcRegisterOncePositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"token\", JSON.parse(responseBody).token);\r",
+											"\r",
+											"pm.test(\"Body matches string - registration:true\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Registration success\"\r",
+											"        && \"\\\"registration\\\":true\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body contains token value\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        JSON.parse(responseBody).token\r",
+											"    )\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"rndm3@gmail.com\",\n\t\"password\": \"Rand0mPa55\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/login",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								},
+								"description": "Supposed to be executed once (every time email should be unique)"
+							},
+							"response": []
+						},
+						{
+							"name": "AcMultiRegisterOnceUsingDataFilePositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string - Registration success\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Registration success\");\r",
+											"});\r",
+											"\r",
+											"tests[\"status: Registration success\"] = (pm.response.json().status) == \"Registration success\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"email\": \"{{email}}\", \"password\": \"Rand0mPa55\"}"
+								},
+								"url": {
+									"raw": "https://super-scheduler-app.herokuapp.com/api/login",
+									"protocol": "https",
+									"host": [
+										"super-scheduler-app",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								},
+								"description": "Supposed to be executed once\r\nRequires external data file - CSV-list with email addresses"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

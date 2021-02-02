@@ -1,0 +1,1586 @@
+{
+	"id": "ad583994-e534-4e3f-8eb8-2740f1fa819a",
+	"name": "SuperScheduler003Tests",
+	"timestamp": "2021-02-02T19:27:33.509Z",
+	"collection_id": "2eef2035-29cb-4da6-84ba-b0aa645d2f62",
+	"folder_id": 0,
+	"environment_id": "4093f926-83ae-45c2-a493-8be0ea2cb59d",
+	"totalPass": 103,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "10bf4b4a-e4fc-4229-afc8-e849d04c9174",
+			"name": "AccAddCostTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/cost",
+			"time": 717,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (717ms)": true,
+				"Status code is 200": true,
+				"Body is correct": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (717ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				717
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (717ms)": true,
+					"Status code is 200": true,
+					"Body is correct": true
+				}
+			]
+		},
+		{
+			"id": "c62c3d1a-ede0-4523-9fc4-f8df4716e4d1",
+			"name": "AccUpdateCostTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/cost",
+			"time": 204,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (204ms)": true,
+				"Status code is 200": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (204ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				204
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (204ms)": true,
+					"Status code is 200": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "756d5a1c-3907-46e3-b73c-a90af0dd43bf",
+			"name": "AccGetCostsTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/costs",
+			"time": 198,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (198ms)": true,
+				"Status code is 200": true,
+				"Body contains ID": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (198ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				198
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (198ms)": true,
+					"Status code is 200": true,
+					"Body contains ID": true
+				}
+			]
+		},
+		{
+			"id": "5c9f9410-2758-4049-b4e5-7cb48adbb0d1",
+			"name": "AccDeleteCostByIdTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/cost/18634",
+			"time": 198,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (198ms)": true,
+				"Status code is 200": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (198ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				198
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (198ms)": true,
+					"Status code is 200": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "dcdde41a-8a56-4abb-895c-e1690785f129",
+			"name": "AccAddCostForNonValidDateTestNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/cost",
+			"time": 202,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Response time is acceptable (202ms)": true,
+				"Status code is 500": true,
+				"Body matches string - could not be parsed": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (202ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - could not be parsed": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				202
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (202ms)": true,
+					"Status code is 500": true,
+					"Body matches string - could not be parsed": true
+				}
+			]
+		},
+		{
+			"id": "60ecfbcc-9767-479d-ad67-dea22eb3cf29",
+			"name": "AccUpdateCostForNonExistingCostTestNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/cost",
+			"time": 188,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is acceptable (188ms)": true,
+				"Status code is 400": true,
+				"Body matches string - Cost doesn't exist": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (188ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Cost doesn't exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				188
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (188ms)": true,
+					"Status code is 400": true,
+					"Body matches string - Cost doesn't exist": true
+				}
+			]
+		},
+		{
+			"id": "b8204d2d-a0aa-4e87-b166-48bcdace5bfd",
+			"name": "AccDeleteCostByIdTestNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/record/321789",
+			"time": 222,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is acceptable (222ms)": true,
+				"Status code is 400": true,
+				"Body matches string - Record doesn't exist": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (222ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Record doesn't exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				222
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (222ms)": true,
+					"Status code is 400": true,
+					"Body matches string - Record doesn't exist": true
+				}
+			]
+		},
+		{
+			"id": "a6bdfec5-f52f-4c69-ab5e-faceb04cfae2",
+			"name": "AcLoginPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/login",
+			"time": 220,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (220ms)": true,
+				"Status code is 200": true,
+				"Body matches string - Login success": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (220ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Login success": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				220
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (220ms)": true,
+					"Status code is 200": true,
+					"Body matches string - Login success": true
+				}
+			]
+		},
+		{
+			"id": "3215719c-1731-4260-bda9-8538990cba67",
+			"name": "AcRegisterUsingEmailAddressGeneratorPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/login",
+			"time": 197,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (197ms)": true,
+				"Status code is 200": true,
+				"Body matches string - Registration success": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (197ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Registration success": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				197
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (197ms)": true,
+					"Status code is 200": true,
+					"Body matches string - Registration success": true
+				}
+			]
+		},
+		{
+			"id": "93704bce-e2fa-459a-a567-887a98e8e394",
+			"name": "AcRegisterOrLoginUsingSwaggerAndCurlPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/login",
+			"time": 253,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (253ms)": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (253ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				253
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (253ms)": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "aff58d33-ffc6-4312-8dd2-17b52e222ce8",
+			"name": "AcRegisterForExistingUserNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/login",
+			"time": 185,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (185ms)": true,
+				"Status code is 200": true,
+				"Body matches string - registration:false": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (185ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - registration:false": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				185
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (185ms)": true,
+					"Status code is 200": true,
+					"Body matches string - registration:false": true
+				}
+			]
+		},
+		{
+			"id": "3f394bb0-3b63-4379-ba22-1d18f132085c",
+			"name": "AcRegisterForNonValidEmailNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/login",
+			"time": 229,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Response time is acceptable (229ms)": true,
+				"Status code is 401": true,
+				"Body matches string - Wrong email or password": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (229ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Wrong email or password": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				229
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (229ms)": true,
+					"Status code is 401": true,
+					"Body matches string - Wrong email or password": true
+				}
+			]
+		},
+		{
+			"id": "53abe691-53ce-4f2a-9588-5ff295b53259",
+			"name": "AcLoginForEmptyEmailNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/login",
+			"time": 289,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Response time is acceptable (289ms)": true,
+				"Status code is 401": true,
+				"Body matches string - Wrong email or password": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (289ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Wrong email or password": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				289
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (289ms)": true,
+					"Status code is 401": true,
+					"Body matches string - Wrong email or password": true
+				}
+			]
+		},
+		{
+			"id": "470f75ab-5ce9-4ca6-a9d6-e82abeaf452d",
+			"name": "AcLoginForEmptyPasswordNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/login",
+			"time": 356,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Response time is acceptable (356ms)": true,
+				"Status code is 401": true,
+				"Body matches string - Wrong email or password": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (356ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Wrong email or password": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				356
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (356ms)": true,
+					"Status code is 401": true,
+					"Body matches string - Wrong email or password": true
+				}
+			]
+		},
+		{
+			"id": "0650b6f4-9834-43e8-9931-f01eeb44b2ca",
+			"name": "AcLoginAgainUtilitaryRequest",
+			"url": "https://super-scheduler-app.herokuapp.com/api/login",
+			"time": 422,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (422ms)": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (422ms)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				422
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (422ms)": true
+				}
+			]
+		},
+		{
+			"id": "e1213897-9856-4dbd-b401-704a76e0ba31",
+			"name": "DcAddDirectionTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/direction",
+			"time": 173,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Response time is acceptable (173ms)": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (173ms)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				173
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (173ms)": true
+				}
+			]
+		},
+		{
+			"id": "c3a4361e-13f3-49be-954b-53cb13cc2bbb",
+			"name": "DcGetDirectionsTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/directions",
+			"time": 264,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (264ms)": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (264ms)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				264
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (264ms)": true
+				}
+			]
+		},
+		{
+			"id": "84ffca4a-eb7e-452a-8d8e-2dea845ff4a6",
+			"name": "DcUpdateDirectionTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/direction/",
+			"time": 162,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Response time is acceptable (162ms)": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (162ms)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				162
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (162ms)": true
+				}
+			]
+		},
+		{
+			"id": "d08f0821-894b-4a44-af31-76a1df1f530f",
+			"name": "DcDeleteDirectionByIdTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/direction/",
+			"time": 173,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Response time is acceptable (173ms)": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (173ms)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				173
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (173ms)": true
+				}
+			]
+		},
+		{
+			"id": "e8780b31-af38-4a08-9562-713cbbaa9345",
+			"name": "RcAddRecordTestForLeapYearPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/record",
+			"time": 309,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (309ms)": true,
+				"Status code is 200": true,
+				"Body contains ID": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (309ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				309
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (309ms)": true,
+					"Status code is 200": true,
+					"Body contains ID": true
+				}
+			]
+		},
+		{
+			"id": "997fc96a-9f98-41c8-bfa0-4feab7e4c6ef",
+			"name": "RcAddRecordTestForEurCurrencyPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/record",
+			"time": 177,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (177ms)": true,
+				"Status code is 200": true,
+				"Body contains ID": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (177ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				177
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (177ms)": true,
+					"Status code is 200": true,
+					"Body contains ID": true
+				}
+			]
+		},
+		{
+			"id": "a5f69874-5066-4b51-abfb-af35622d547b",
+			"name": "RcUpdateRecordTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/record",
+			"time": 243,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (243ms)": true,
+				"Status code is 200": true,
+				"Body matches string - Record [...] updated": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (243ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Record [...] updated": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				243
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (243ms)": true,
+					"Status code is 200": true,
+					"Body matches string - Record [...] updated": true
+				}
+			]
+		},
+		{
+			"id": "33e5008f-a350-4760-b98d-9bd5f32187ec",
+			"name": "RcGetAllRecordsTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/records",
+			"time": 393,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (393ms)": true,
+				"Status code is 200": true,
+				"Body matches string - (id value)": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (393ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - (id value)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				393
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (393ms)": true,
+					"Status code is 200": true,
+					"Body matches string - (id value)": true
+				}
+			]
+		},
+		{
+			"id": "857186d0-afa5-4fe7-bbea-6f7282ac0b98",
+			"name": "RcGetRecordsPeriodTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/recordsPeriod",
+			"time": 198,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (198ms)": true,
+				"Status code is 200": true,
+				"Body matches string - 2020": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (198ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - 2020": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				198
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (198ms)": true,
+					"Status code is 200": true,
+					"Body matches string - 2020": true
+				}
+			]
+		},
+		{
+			"id": "60f223f8-d290-498d-b941-e1f85b8bfe7b",
+			"name": "RcDeleteRecordByIdTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/record/18636",
+			"time": 219,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (219ms)": true,
+				"Status code is 200": true,
+				"Body matches string - Record deleted": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (219ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Record deleted": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				219
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (219ms)": true,
+					"Status code is 200": true,
+					"Body matches string - Record deleted": true
+				}
+			]
+		},
+		{
+			"id": "a8992ce8-bbaf-45b2-b211-3672cd218ce1",
+			"name": "RcAddRecordTestForNonValidDateNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/record",
+			"time": 262,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Response time is acceptable (262ms)": true,
+				"Status code is 500": true,
+				"Body matches string - Invalid date": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (262ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Invalid date": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				262
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (262ms)": true,
+					"Status code is 500": true,
+					"Body matches string - Invalid date": true
+				}
+			]
+		},
+		{
+			"id": "9490bb00-ce5d-423a-abca-6b3047cdabe9",
+			"name": "RcAddRecordTestForNonValidTime",
+			"url": "https://super-scheduler-app.herokuapp.com/api/record",
+			"time": 287,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Response time is acceptable (287ms)": true,
+				"Status code is 500": true,
+				"Body contains error message for non-valid time": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (287ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains error message for non-valid time": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				287
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (287ms)": true,
+					"Status code is 500": true,
+					"Body contains error message for non-valid time": true
+				}
+			]
+		},
+		{
+			"id": "c7fbdc78-b71d-4adf-8777-8803211a5f56",
+			"name": "RcUpdateRecordForNonExistingRecordTestNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/record",
+			"time": 358,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is acceptable (358ms)": true,
+				"Status code is 400": true,
+				"Body matches string - Record doesn't exist": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (358ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Record doesn't exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				358
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (358ms)": true,
+					"Status code is 400": true,
+					"Body matches string - Record doesn't exist": true
+				}
+			]
+		},
+		{
+			"id": "34b7dfe1-83e6-4aa2-97c9-e8a0d12f3c13",
+			"name": "RcGetAllRecordsForNonValidMonthValueTestNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/records",
+			"time": 244,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is acceptable (244ms)": true,
+				"Status code is 400": true,
+				"Body matches string - Wrong month period": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (244ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Wrong month period": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				244
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (244ms)": true,
+					"Status code is 400": true,
+					"Body matches string - Wrong month period": true
+				}
+			]
+		},
+		{
+			"id": "042a2a03-d4ff-4f5f-b306-526df407162f",
+			"name": "RcGetAllRecordsForNonValidYearValueTestNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/records",
+			"time": 211,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is acceptable (211ms)": true,
+				"Status code is 400": true,
+				"Body matches string - Wrong year period": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (211ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Wrong year period": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				211
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (211ms)": true,
+					"Status code is 400": true,
+					"Body matches string - Wrong year period": true
+				}
+			]
+		},
+		{
+			"id": "a9684fa0-28d9-4e0b-bd08-4177a7b1db02",
+			"name": "RcDeleteRecordByIdTestNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/record/789012",
+			"time": 222,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is acceptable (222ms)": true,
+				"Status code is 400": true,
+				"Body matches string - Record doesn't exist": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (222ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Record doesn't exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				222
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (222ms)": true,
+					"Status code is 400": true,
+					"Body matches string - Record doesn't exist": true
+				}
+			]
+		},
+		{
+			"id": "07fa0937-8944-4441-a89c-14686940e967",
+			"name": "ScAddScheduleTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/schedule",
+			"time": 815,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (815ms)": true,
+				"Status code is 200": true,
+				"Body is correct": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (815ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				815
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (815ms)": true,
+					"Status code is 200": true,
+					"Body is correct": true
+				}
+			]
+		},
+		{
+			"id": "3ca1d7ca-f62c-4c4b-9226-5b7d757084e1",
+			"name": "ScUpdateScheduleTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/schedule",
+			"time": 959,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (959ms)": true,
+				"Status code is 200": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (959ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				959
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (959ms)": true,
+					"Status code is 200": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "d6c53f1a-925a-4b56-bbc5-c624ab785b8e",
+			"name": "ScGetScheduleTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/schedules",
+			"time": 236,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (236ms)": true,
+				"Status code is 200": true,
+				"Body contains ID": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (236ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body contains ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				236
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (236ms)": true,
+					"Status code is 200": true,
+					"Body contains ID": true
+				}
+			]
+		},
+		{
+			"id": "d8301659-66fc-46a1-acd3-75070c2201cd",
+			"name": "ScDeleteScheduleByIdTestPositive",
+			"url": "https://super-scheduler-app.herokuapp.com/api/schedule/18637",
+			"time": 353,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is acceptable (353ms)": true,
+				"Status code is 200": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (353ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				353
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (353ms)": true,
+					"Status code is 200": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "5129691d-bd87-47ac-a2f7-3df2c7cfa208",
+			"name": "ScAddScheduleForNonValidDatesTestNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/schedule",
+			"time": 231,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Response time is acceptable (231ms)": true,
+				"Status code is 500": true,
+				"Body matches string - could not be parsed": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (231ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - could not be parsed": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				231
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (231ms)": true,
+					"Status code is 500": true,
+					"Body matches string - could not be parsed": true
+				}
+			]
+		},
+		{
+			"id": "0e3643f7-0f85-4508-a7db-2f020869c62f",
+			"name": "ScUpdateScheduleForNonExistingScheduleTestNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/schedule",
+			"time": 224,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is acceptable (224ms)": true,
+				"Status code is 400": true,
+				"Body matches string - Schedule doesn't exist": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (224ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Schedule doesn't exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				224
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (224ms)": true,
+					"Status code is 400": true,
+					"Body matches string - Schedule doesn't exist": true
+				}
+			]
+		},
+		{
+			"id": "efeb2cc7-af97-4ee2-9f54-1827ccf4f38f",
+			"name": "ScDeleteScheduleByIdTestNegative",
+			"url": "https://super-scheduler-app.herokuapp.com/api/record/890123",
+			"time": 227,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Response time is acceptable (227ms)": true,
+				"Status code is 400": true,
+				"Body matches string - Schedule doesn't exist": true
+			},
+			"testPassFailCounts": {
+				"Response time is acceptable (227ms)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string - Schedule doesn't exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				227
+			],
+			"allTests": [
+				{
+					"Response time is acceptable (227ms)": true,
+					"Status code is 400": true,
+					"Body matches string - Schedule doesn't exist": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 11020,
+	"collection": {
+		"requests": [
+			{
+				"id": "10bf4b4a-e4fc-4229-afc8-e849d04c9174",
+				"method": "POST"
+			},
+			{
+				"id": "c62c3d1a-ede0-4523-9fc4-f8df4716e4d1",
+				"method": "PUT"
+			},
+			{
+				"id": "756d5a1c-3907-46e3-b73c-a90af0dd43bf",
+				"method": "POST"
+			},
+			{
+				"id": "5c9f9410-2758-4049-b4e5-7cb48adbb0d1",
+				"method": "DELETE"
+			},
+			{
+				"id": "dcdde41a-8a56-4abb-895c-e1690785f129",
+				"method": "POST"
+			},
+			{
+				"id": "60ecfbcc-9767-479d-ad67-dea22eb3cf29",
+				"method": "PUT"
+			},
+			{
+				"id": "b8204d2d-a0aa-4e87-b166-48bcdace5bfd",
+				"method": "DELETE"
+			},
+			{
+				"id": "a6bdfec5-f52f-4c69-ab5e-faceb04cfae2",
+				"method": "POST"
+			},
+			{
+				"id": "3215719c-1731-4260-bda9-8538990cba67",
+				"method": "POST"
+			},
+			{
+				"id": "93704bce-e2fa-459a-a567-887a98e8e394",
+				"method": "POST"
+			},
+			{
+				"id": "aff58d33-ffc6-4312-8dd2-17b52e222ce8",
+				"method": "POST"
+			},
+			{
+				"id": "3f394bb0-3b63-4379-ba22-1d18f132085c",
+				"method": "POST"
+			},
+			{
+				"id": "53abe691-53ce-4f2a-9588-5ff295b53259",
+				"method": "POST"
+			},
+			{
+				"id": "470f75ab-5ce9-4ca6-a9d6-e82abeaf452d",
+				"method": "POST"
+			},
+			{
+				"id": "0650b6f4-9834-43e8-9931-f01eeb44b2ca",
+				"method": "POST"
+			},
+			{
+				"id": "e1213897-9856-4dbd-b401-704a76e0ba31",
+				"method": "POST"
+			},
+			{
+				"id": "c3a4361e-13f3-49be-954b-53cb13cc2bbb",
+				"method": "GET"
+			},
+			{
+				"id": "84ffca4a-eb7e-452a-8d8e-2dea845ff4a6",
+				"method": "PUT"
+			},
+			{
+				"id": "d08f0821-894b-4a44-af31-76a1df1f530f",
+				"method": "DELETE"
+			},
+			{
+				"id": "e8780b31-af38-4a08-9562-713cbbaa9345",
+				"method": "POST"
+			},
+			{
+				"id": "997fc96a-9f98-41c8-bfa0-4feab7e4c6ef",
+				"method": "POST"
+			},
+			{
+				"id": "a5f69874-5066-4b51-abfb-af35622d547b",
+				"method": "PUT"
+			},
+			{
+				"id": "33e5008f-a350-4760-b98d-9bd5f32187ec",
+				"method": "POST"
+			},
+			{
+				"id": "857186d0-afa5-4fe7-bbea-6f7282ac0b98",
+				"method": "GET"
+			},
+			{
+				"id": "60f223f8-d290-498d-b941-e1f85b8bfe7b",
+				"method": "DELETE"
+			},
+			{
+				"id": "a8992ce8-bbaf-45b2-b211-3672cd218ce1",
+				"method": "POST"
+			},
+			{
+				"id": "9490bb00-ce5d-423a-abca-6b3047cdabe9",
+				"method": "POST"
+			},
+			{
+				"id": "c7fbdc78-b71d-4adf-8777-8803211a5f56",
+				"method": "PUT"
+			},
+			{
+				"id": "34b7dfe1-83e6-4aa2-97c9-e8a0d12f3c13",
+				"method": "POST"
+			},
+			{
+				"id": "042a2a03-d4ff-4f5f-b306-526df407162f",
+				"method": "POST"
+			},
+			{
+				"id": "a9684fa0-28d9-4e0b-bd08-4177a7b1db02",
+				"method": "DELETE"
+			},
+			{
+				"id": "07fa0937-8944-4441-a89c-14686940e967",
+				"method": "POST"
+			},
+			{
+				"id": "3ca1d7ca-f62c-4c4b-9226-5b7d757084e1",
+				"method": "PUT"
+			},
+			{
+				"id": "d6c53f1a-925a-4b56-bbc5-c624ab785b8e",
+				"method": "GET"
+			},
+			{
+				"id": "d8301659-66fc-46a1-acd3-75070c2201cd",
+				"method": "DELETE"
+			},
+			{
+				"id": "5129691d-bd87-47ac-a2f7-3df2c7cfa208",
+				"method": "POST"
+			},
+			{
+				"id": "0e3643f7-0f85-4508-a7db-2f020869c62f",
+				"method": "PUT"
+			},
+			{
+				"id": "efeb2cc7-af97-4ee2-9f54-1827ccf4f38f",
+				"method": "DELETE"
+			}
+		]
+	}
+}

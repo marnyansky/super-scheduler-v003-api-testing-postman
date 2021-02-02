@@ -1,0 +1,2179 @@
+{
+	"info": {
+		"_postman_id": "2eef2035-29cb-4da6-84ba-b0aa645d2f62",
+		"name": "SuperScheduler003Tests",
+		"description": "SuperScheduler v0.0.3 app API Testing:\r\n> Postman\r\n> Swagger\r\n> cURL\r\n> JavaScript snippets & scripts\r\n> JSON\r\n= = =\r\nKnown application issues:\r\n- weak in-app validation of such values as city names, currency abbreviations, wage amount etc.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AdditionalCostController",
+			"item": [
+				{
+					"name": "AccPositiveTests",
+					"item": [
+						{
+							"name": "AccAddCostTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"idCost\", pm.response.json().id);\r",
+											"\r",
+											"pm.test(\"Body is correct\", function () {\r",
+											"    pm.response.to.have.body(\"{\\\"id\\\":\" + pm.environment.get(\"idCost\") + \"}\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"cost\": 10,\r\n  \"currency\": \"NIS\",\r\n  \"date\": \"18.05.2020\",\r\n  \"id\": {{idCost}},\r\n  \"title\": \"Expenses\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/cost",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cost"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AccUpdateCostTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        \"Additional cost updated\"\r",
+											"    );\r",
+											"});\r",
+											"\r",
+											"// tests[\"status: Additional cost updated\"]\r",
+											"//     = (pm.response.json().status) == \"Additional cost updated\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"cost\": 2,\r\n  \"currency\": \"USD\",\r\n  \"date\": \"18.05.2020\",\r\n  \"id\": {{idCost}},\r\n  \"title\": \"Expenses USD\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/cost",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cost"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AccGetCostsTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body contains ID\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        pm.environment.get(\"idCost\")\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"month\": 5,\r\n  \"year\": 2020\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/costs",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"costs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AccDeleteCostByIdTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        \"Additional cost with id \"\r",
+											"        + pm.environment.get(\"idCost\")\r",
+											"        + \" was deleted\"\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/cost/{{idCost}}",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cost",
+										"{{idCost}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Folder Level Tests:\r\n> Status code: Code is 200",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "AccNegativeTests",
+					"item": [
+						{
+							"name": "AccAddCostForNonValidDateTestNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {\r",
+											"    pm.response.to.have.status(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - could not be parsed\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"could not be parsed at index 5\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"cost\": 10,\r\n  \"currency\": \"NIS\",\r\n  \"date\": \"02.2020\",\r\n  \"id\": {{idCost}},\r\n  \"title\": \"Expenses\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/cost",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cost"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AccUpdateCostForNonExistingCostTestNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Cost doesn't exist\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Additional cost with id \"\r",
+											"        + pm.environment.get(\"idCostNonExisting\")\r",
+											"        + \" doesn't exist\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"cost\": 2,\r\n  \"currency\": \"USD\",\r\n  \"date\": \"18.05.2020\",\r\n  \"id\": {{idCostNonExisting}},\r\n  \"title\": \"Expenses USD\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/cost",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"cost"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AccDeleteCostByIdTestNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Record doesn't exist\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        pm.environment.get(\"idCostNonExisting\") && \"doesn't exist\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/record/{{idCostNonExisting}}",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"record",
+										"{{idCostNonExisting}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "Folder Level Test:\r\n> Response time is in range 0-3000ms",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Response time is acceptable (\" + responseTime + \"ms)\"] = _.inRange(responseTime, 0, 3000);"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "AuthController",
+			"item": [
+				{
+					"name": "AcPositiveTests",
+					"item": [
+						{
+							"name": "AcLoginPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"token\", JSON.parse(responseBody).token);\r",
+											"\r",
+											"pm.test(\"Body matches string - Login success\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Login success\"\r",
+											"        && \"\\\"registration\\\":false\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"randommail2020@gmail.com\",\n\t\"password\": \"Rand0mPa55w0rd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/login",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AcRegisterUsingEmailAddressGeneratorPositive",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Generate random email address (length 6-9)\r",
+											"var symbols = \"qwertyuiopasdfghjklzxcvbnm1234567890\";\r",
+											"function rand(min, max) {\r",
+											"\treturn (min + Math.random() * (max - min + 1)) | 0;\r",
+											"}\r",
+											"function getRandomStr(len) {\r",
+											"\tvar ret = \"\";\r",
+											"\tfor (var i = 0; i < len; i++)\r",
+											"\t\tret += symbols[rand(0, symbols.length - 1)];\r",
+											"\treturn ret;\r",
+											"}\r",
+											"\r",
+											"function getEmail() {\r",
+											"\tvar a = getRandomStr(rand(6, 9));\r",
+											"\treturn a + \"@gmail.com\";\r",
+											"}\r",
+											"\r",
+											"pm.environment.set(\"emailRandomGenerated\", getEmail());\r",
+											"\r",
+											"console.log(environment.emailRandomGenerated);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string - Registration success\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Registration success\");\r",
+											"});\r",
+											"\r",
+											"// tests[\"status: Registartion success\"] = pm.response.json().status == \"Registartion success\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"{{emailRandomGenerated}}\",\r\n  \"password\": \"Rand0mPa55\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/login",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AcRegisterOrLoginUsingSwaggerAndCurlPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"email\": \"reglogcurl@gmail.com\", \"password\": \"Rand0mPa55w0rd\"}"
+								},
+								"url": {
+									"raw": "https://super-scheduler-app.herokuapp.com/api/login",
+									"protocol": "https",
+									"host": [
+										"super-scheduler-app",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Folder Level Tests:\r\n> Status code: Code is 200",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "AcNegativeTests",
+					"item": [
+						{
+							"name": "AcRegisterForExistingUserNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.environment.set(\"token\", JSON.parse(responseBody).token);\r",
+											"\r",
+											"pm.test(\"Body matches string - registration:false\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"\\\"registration\\\":false\"\r",
+											"        && \"Login success\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"randommail2020@gmail.com\",\n\t\"password\": \"Rand0mPa55w0rd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/login",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								},
+								"description": "Supposed to be executed once"
+							},
+							"response": []
+						},
+						{
+							"name": "AcRegisterForNonValidEmailNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"token\", JSON.parse(responseBody).token);\r",
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Wrong email or password\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Wrong email or password\");\r",
+											"});\r",
+											"\r",
+											"pm.environment.set(\"token\", JSON.parse(responseBody).token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"@.\",\n\t\"password\": \"Rand0mPa55w0rd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/login",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								},
+								"description": "Supposed to be executed once"
+							},
+							"response": []
+						},
+						{
+							"name": "AcLoginForEmptyEmailNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"token\", JSON.parse(responseBody).token);\r",
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Wrong email or password\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Wrong email or password\");\r",
+											"});\r",
+											"\r",
+											"pm.environment.set(\"token\", JSON.parse(responseBody).token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"\",\n\t\"password\": \"Rand0mPa55w0rd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/login",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AcLoginForEmptyPasswordNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"token\", JSON.parse(responseBody).token);\r",
+											"\r",
+											"pm.test(\"Status code is 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Wrong email or password\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Wrong email or password\");\r",
+											"});\r",
+											"\r",
+											"pm.environment.set(\"token\", JSON.parse(responseBody).token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"rndm@gmail.com\",\n\t\"password\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/login",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AcLoginAgainUtilitaryRequest",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"token\", JSON.parse(responseBody).token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"randommail2020@gmail.com\",\n\t\"password\": \"Rand0mPa55w0rd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/login",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"description": "Folder Level Test:\r\n> Response time is in range 0-3000ms",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Response time is acceptable (\" + responseTime + \"ms)\"] = _.inRange(responseTime, 0, 3000);"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "BUG---DirectionController",
+			"item": [
+				{
+					"name": "DcPositiveTests",
+					"item": [
+						{
+							"name": "DcAddDirectionTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// pm.test(\"Status code is 200\", function () {\r",
+											"//     pm.response.to.have.status(200);\r",
+											"// });\r",
+											"\r",
+											"// The response body has to include a dynamic record id that can't be set manually.\r",
+											"// So no other tests can be performed. A bug report should be filled according to these findings\r",
+											"\r",
+											"// The proper test variation 1:\r",
+											"// pm.test(\"Body is not empty\", function () {\r",
+											"//     pm.response.to.not.have.body(\"\");\r",
+											"// });\r",
+											"\r",
+											"// The proper test variation 2:\r",
+											"// tests[\"Body is not empty v2\"] = (responseBody!==null && responseBody.length!==0);\r",
+											"\r",
+											"// The proper test variation 3:\r",
+											"// tests[\"Body is not empty v3\"] = (responseBody.length !== 0);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"costPerKm\": 5,\r\n  \"costRes\": 2,\r\n  \"currency\": \"NIS\",\r\n  \"directionFrom\": \"Haifa\",\r\n  \"directionTo\": \"Tel-Aviv\",\r\n  \"drivingCost\": 0,\r\n  \"id\": {{idDirection}},\r\n  \"numOfKm\": 92.3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/direction",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"direction"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DcGetDirectionsTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// The response body is supposed to include all saved directions\r",
+											"// Direction module should be fixed first.\r",
+											"// For details see Test section of AddDirectionTestPositive."
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/directions",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"directions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DcUpdateDirectionTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Direction module should be fixed first\r",
+											"// The response body should not be empty\r",
+											"// For details see Test section of AddDirectionTestPositive."
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"directions\": [\r\n    {\r\n      \"costPerKm\": 5,\r\n      \"costRes\": 2,\r\n      \"currency\": \"NIS\",\r\n      \"directionFrom\": \"Haifa\",\r\n      \"directionTo\": \"Tel-Aviv\",\r\n      \"drivingCost\": 0,\r\n      \"id\": {{idDirection}},\r\n      \"numOfKm\": 92.3\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/direction/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"direction",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DcDeleteDirectionByIdTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Direction module should be fixed first\r",
+											"// The response body should not be empty\r",
+											"// Status code should not be always 200"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/direction/{{idDirection}}",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"direction",
+										"{{idDirection}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "DcNegativeTests",
+					"item": [],
+					"description": "The folder remains empty until the Direction module is fixed",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"description": "Folder Level Test:\r\n> Response time is in range 0-3000ms",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Response time is acceptable (\" + responseTime + \"ms)\"] = _.inRange(responseTime, 0, 3000);"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "RecordConroller",
+			"item": [
+				{
+					"name": "RcPositiveTests",
+					"item": [
+						{
+							"name": "RcAddRecordTestForLeapYearPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"idRecord\", pm.response.json().id);\r",
+											"\r",
+											"pm.test(\"Body contains ID\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        pm.environment.get(\"idRecord\")\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"breaks\": 0,\r\n  \"currency\": \"USD\",\r\n  \"date\": {\r\n    \"dayOfMonth\": 29,\r\n    \"dayOfWeek\": \"7\",\r\n    \"month\": 2,\r\n    \"year\": 2020\r\n  },\r\n  \"hours\": 2,\r\n  \"id\": {{idRecord}},\r\n  \"timeFrom\": \"12:00\",\r\n  \"timeTo\": \"14:00\",\r\n  \"title\": \"QA Practice\",\r\n  \"totalSalary\": 200,\r\n  \"type\": \"practice\",\r\n  \"wage\": 50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/record",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"record"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RcAddRecordTestForEurCurrencyPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"idRecord\", pm.response.json().id);\r",
+											"\r",
+											"pm.test(\"Body contains ID\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        pm.environment.get(\"idRecord\")\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"breaks\": 0,\r\n  \"currency\": \"EUR\",\r\n  \"date\": {\r\n    \"dayOfMonth\": 29,\r\n    \"dayOfWeek\": \"5\",\r\n    \"month\": 2,\r\n    \"year\": 2020\r\n  },\r\n  \"hours\": 2,\r\n  \"id\": {{idRecord}},\r\n  \"timeFrom\": \"11:00\",\r\n  \"timeTo\": \"13:00\",\r\n  \"title\": \"QA Practice\",\r\n  \"totalSalary\": 200,\r\n  \"type\": \"practice\",\r\n  \"wage\": 50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/record",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"record"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RcUpdateRecordTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string - Record [...] updated\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Record with id: \"\r",
+											"        + pm.environment.get(\"idRecord\")\r",
+											"        + \" was updated\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"breaks\": 0,\r\n  \"currency\": \"NIS\",\r\n  \"date\": {\r\n    \"dayOfMonth\": 29,\r\n    \"dayOfWeek\": \"5\",\r\n    \"month\": 2,\r\n    \"year\": 2020\r\n  },\r\n  \"hours\": 3,\r\n  \"id\": {{idRecord}},\r\n  \"timeFrom\": \"12:00\",\r\n  \"timeTo\": \"15:00\",\r\n  \"title\": \"QA Practice\",\r\n  \"totalSalary\": 100,\r\n  \"type\": \"practice\",\r\n  \"wage\": 20\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/record",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"record"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RcGetAllRecordsTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string - (id value)\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        pm.environment.get(\"idRecord\")\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"monthFrom\": 2,\r\n  \"monthTo\": 2,\r\n  \"yearFrom\": 2020,\r\n  \"yearTo\": 2020\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/records",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"records"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RcGetRecordsPeriodTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string - 2020\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"2020\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/recordsPeriod",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"recordsPeriod"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RcDeleteRecordByIdTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string - Record deleted\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        \"Record with id: \"\r",
+											"        + pm.environment.get(\"idRecord\")\r",
+											"        + \" was deleted\"\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/record/{{idRecord}}",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"record",
+										"{{idRecord}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Folder Level Test:\r\n> Status code: Code is 200",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "RcNegativeTests",
+					"item": [
+						{
+							"name": "RcAddRecordTestForNonValidDateNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// for one-time run only\r",
+											"// pm.environment.set(\"idRecord\", pm.response.json().id);\r",
+											"\r",
+											"pm.test(\"Status code is 500\", function () {\r",
+											"    pm.response.to.have.status(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Invalid date\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Invalid date\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"breaks\": 0,\r\n  \"currency\": \"AUD\",\r\n  \"date\": {\r\n    \"dayOfMonth\": 29,\r\n    \"dayOfWeek\": \"6\",\r\n    \"month\": 2,\r\n    \"year\": 2019\r\n  },\r\n  \"hours\": 2,\r\n  \"id\": {{idRecord}},\r\n  \"timeFrom\": \"12:00\",\r\n  \"timeTo\": \"14:00\",\r\n  \"title\": \"QA Practice\",\r\n  \"totalSalary\": 200,\r\n  \"type\": \"practice\",\r\n  \"wage\": 50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/record",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"record"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RcAddRecordTestForNonValidTime",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// for one-time run only\r",
+											"// pm.environment.set(\"idRecord\", pm.response.json().id);\r",
+											"\r",
+											"pm.test(\"Status code is 500\", function () {\r",
+											"    pm.response.to.have.status(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body contains error message for non-valid time\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        \"Invalid value for MinuteOfHour\"\r",
+											"    )\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"breaks\": 0,\r\n  \"currency\": \"NIS\",\r\n  \"date\": {\r\n    \"dayOfMonth\": 31,\r\n    \"dayOfWeek\": \"3\",\r\n    \"month\": 12,\r\n    \"year\": 2019\r\n  },\r\n  \"hours\": 3,\r\n  \"id\": {{idRecord}},\r\n  \"timeFrom\": \"12:00\",\r\n  \"timeTo\": \"14:60\",\r\n  \"title\": \"QA Practice\",\r\n  \"totalSalary\": 200,\r\n  \"type\": \"practice\",\r\n  \"wage\": 50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/record",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"record"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RcUpdateRecordForNonExistingRecordTestNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Record doesn't exist\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Record with id \"\r",
+											"        + pm.environment.get(\"idRecordNonExisting\")\r",
+											"        + \" doesn't exist!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"breaks\": 0,\r\n  \"currency\": \"EUR\",\r\n  \"date\": {\r\n    \"dayOfMonth\": 29,\r\n    \"dayOfWeek\": \"5\",\r\n    \"month\": 2,\r\n    \"year\": 2020\r\n  },\r\n  \"hours\": 2,\r\n  \"id\": {{idRecordNonExisting}},\r\n  \"timeFrom\": \"11:00\",\r\n  \"timeTo\": \"13:00\",\r\n  \"title\": \"QA Practice\",\r\n  \"totalSalary\": 200,\r\n  \"type\": \"practice\",\r\n  \"wage\": 50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/record",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"record"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RcGetAllRecordsForNonValidMonthValueTestNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Wrong month period\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Wrong month period\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"monthFrom\": 0,\r\n  \"monthTo\": 2,\r\n  \"yearFrom\": 2020,\r\n  \"yearTo\": 2020\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/records",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"records"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RcGetAllRecordsForNonValidYearValueTestNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Wrong year period\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Wrong year period\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"monthFrom\": 2,\r\n  \"monthTo\": 2,\r\n  \"yearFrom\": 9999,\r\n  \"yearTo\": 9999\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/records",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"records"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RcDeleteRecordByIdTestNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Record doesn't exist\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        pm.environment.get(\"idRecordNonExisting\") && \"doesn't exist\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/record/{{idRecordNonExisting}}",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"record",
+										"{{idRecordNonExisting}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"description": "Folder Level Test:\r\n> Response time is in range 0-3000ms",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Response time is acceptable (\" + responseTime + \"ms)\"] = _.inRange(responseTime, 0, 3000);"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "ScheduleController",
+			"item": [
+				{
+					"name": "ScPositiveTests",
+					"item": [
+						{
+							"name": "ScAddScheduleTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"idSchedule\", pm.response.json().id);\r",
+											"\r",
+											"pm.test(\"Body is correct\", function () {\r",
+											"    pm.response.to.have.body(\"{\\\"id\\\":\" + pm.environment.get(\"idSchedule\") + \"}\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"breaks\": 2,\r\n  \"currency\": \"NIS\",\r\n  \"dateFrom\": \"01.05.2020\",\r\n  \"dateTo\": \"01.06.2020\",\r\n  \"daysOfWeek\": [\r\n    1, 2, 3, 4, 5\r\n  ],\r\n  \"editDate\": \"15.05.2020 23:59:59\",\r\n  \"id\": {{idSchedule}},\r\n  \"timeFrom\": \"08:00\",\r\n  \"timeTo\": \"17:00\",\r\n  \"title\": \"Job\",\r\n  \"type\": \"employment\",\r\n  \"wage\": 11000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/schedule",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"schedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ScUpdateScheduleTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        \"Schedule updated!\"\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"breaks\": 1,\r\n  \"currency\": \"NIS\",\r\n  \"dateFrom\": \"01.07.2020\",\r\n  \"dateTo\": \"01.08.2020\",\r\n  \"daysOfWeek\": [\r\n    1, 2, 3, 4, 5\r\n  ],\r\n  \"editDate\": \"15.05.2020 00:00:00\",\r\n  \"id\": {{idSchedule}},\r\n  \"timeFrom\": \"09:00\",\r\n  \"timeTo\": \"18:00\",\r\n  \"title\": \"Job\",\r\n  \"type\": \"employment\",\r\n  \"wage\": 11000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/schedule",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"schedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ScGetScheduleTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body contains ID\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        pm.environment.get(\"idSchedule\")\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/schedules",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"schedules"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ScDeleteScheduleByIdTestPositive",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        \"Schedule with id \"\r",
+											"        + pm.environment.get(\"idSchedule\")\r",
+											"        + \" was delete\"\r",
+											"    );\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/schedule/{{idSchedule}}",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"schedule",
+										"{{idSchedule}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Folder Level Test:\r\n> Status code: Code is 200",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "ScNegativeTests",
+					"item": [
+						{
+							"name": "ScAddScheduleForNonValidDatesTestNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {\r",
+											"    pm.response.to.have.status(500);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - could not be parsed\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"could not be parsed at index 2\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"breaks\": 2,\r\n  \"currency\": \"NIS\",\r\n  \"dateFrom\": \"2020\",\r\n  \"dateTo\": \"2021\",\r\n  \"daysOfWeek\": [\r\n    1, 2, 3, 4, 5\r\n  ],\r\n  \"editDate\": \"15.05.2020 23:59:59\",\r\n  \"id\": {{idSchedule}},\r\n  \"timeFrom\": \"08:00\",\r\n  \"timeTo\": \"17:00\",\r\n  \"title\": \"Job\",\r\n  \"type\": \"employment\",\r\n  \"wage\": 11000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/schedule",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"schedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ScUpdateScheduleForNonExistingScheduleTestNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Schedule doesn't exist\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Schedule with id \"\r",
+											"        + pm.environment.get(\"idScheduleNonExisting\")\r",
+											"        + \" doesn't exist\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"breaks\": 1,\r\n  \"currency\": \"NIS\",\r\n  \"dateFrom\": \"01.07.2020\",\r\n  \"dateTo\": \"01.08.2020\",\r\n  \"daysOfWeek\": [\r\n    1, 2, 3, 4, 5\r\n  ],\r\n  \"editDate\": \"15.05.2020 00:00:00\",\r\n  \"id\": {{idScheduleNonExisting}},\r\n  \"timeFrom\": \"09:00\",\r\n  \"timeTo\": \"18:00\",\r\n  \"title\": \"Job\",\r\n  \"type\": \"employment\",\r\n  \"wage\": 11000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/schedule",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"schedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ScDeleteScheduleByIdTestNegative",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string - Schedule doesn't exist\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\r",
+											"        pm.environment.get(\"idScheduleNonExisting\") && \"doesn't exist\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}/api/record/{{idScheduleNonExisting}}",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"record",
+										"{{idScheduleNonExisting}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"description": "Folder Level Test:\r\n> Response time is in range 0-3000ms",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Response time is acceptable (\" + responseTime + \"ms)\"] = _.inRange(responseTime, 0, 3000);"
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
